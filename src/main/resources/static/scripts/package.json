@@ -1,0 +1,22 @@
+{
+  "name": "mentor-demo-node",
+  "version": "0.0.1",
+  "description": "a nodejs instance for spring boot applications",
+  "source": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html --port 8001",
+    "build": "parcel build src/main.js"
+  },
+  "author": "Christopher Walsh <christopher.walsh@its.ny.gov>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  }
+}

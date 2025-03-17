@@ -1,0 +1,18 @@
+<div class="row" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+    <div class="col">
+        <h1>Spring Boot SSO Authentication</h1>
+        <form>
+            <div class="form-group">
+                <label for="username" class="form-label">username</label>
+                <input type="text" class="form-control" name="username" id="username">
+            </div>
+            <div class="form-group">
+                <label for="passwd" class="form-label">password</label>
+                <input type="password" name="passwd" class="form-control" id="passwd">
+            </div>
+            <div>
+                <button type="submit">login</button>
+            </div>
+        </form>
+    </div>
+</div>

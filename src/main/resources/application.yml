@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: mentor-demo
+  datasource:
+    url: jdbc:mariadb://localhost:3306/spring_practice
+    username: springuser
+    password: springuser
+    # commented out because new version of spring boot doesn't require driver names.
+    # driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      # ddl-update: none    # don't auto-generate tables
+    properties:
+      hibernate:
+        # dialect: org.hibernate.dialect.MariaDBDialect
+    open-in-view: false
+okta:
+  oauth2:
+    # https://manage.auth0.com/dashboard/us/dev-dhijwyx8bu07cdbi/applications/G77xtaHMVX27pVWqwEsg8SNMkGHpeoLW/quickstart
+    issuer: https://dev-dhijwyx8bu07cdbi.us.auth0.com/
+    client-id: G77xtaHMVX27pVWqwEsg8SNMkGHpeoLW
+    client-secret: n-asEHwDB3ESok_HUsq15g9RRyq_HBp-TaADoN1orJl-OjMf2KRCgL2Mkt8cg8Ls
+server:
+    # default port for callbacks is 3000 so change this to match your web service port
+    address: 127.0.0.1
+    port: 8080

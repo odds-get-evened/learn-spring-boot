@@ -1,0 +1,8 @@
+<div class="col" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+    <h1>success</h1>
+    <div>
+        <div th:text="${user.email}">email address</div>
+        <div th:text="${user.firstName + ' ' + user.lastName}">name</div>
+    </div>
+</div>

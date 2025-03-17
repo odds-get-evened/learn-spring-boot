@@ -1,0 +1,10 @@
+<div class="col" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <div th:each="album : ${albums}" class="vstack gap-3">
+        <h3>
+            <a th:href="@{/music/album/details(id=${album.id})}" th:text="${album.title}"></a>
+        </h3>
+        <div th:text="${#dates.format(album.releaseDate*1000, 'MM/yyyy')}"></div>
+    </div>
+</div>

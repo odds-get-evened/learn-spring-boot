@@ -1,0 +1,25 @@
+<div class="col" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+    <form method="post" th:action="@{/store/customer/add}" th:object="${customer}">
+        <div class="input-group">
+            <label for="firstName" class="form-label">first name</label>
+            <input type="text" class="form-control" name="firstName" id="firstName" th:field="*{firstName}">
+        </div>
+        <div class="input-group">
+            <label for="lastName" class="form-label">last name</label>
+            <input type="text" class="form-control" name="lastName" id="lastName" th:field="*{lastName}">
+        </div>
+        <div class="input-group">
+            <label for="email" class="form-label">email</label>
+            <input type="email" class="form-control" name="email" id="email" th:field="*{email}">
+        </div>
+        <div class="input-group">
+            <label for="phoneNumber" class="form-label">phone number</label>
+            <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" th:field="*{phoneNumber}">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">add</button>
+        </div>
+    </form>
+</div>

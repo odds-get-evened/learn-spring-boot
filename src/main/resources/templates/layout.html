@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="vstack gap-3">
+                    <div sec:authorize="!isAuthenticated()">
+                        <div class="col-2">Not logged in, so <a th:href="@{/oauth2/authorization/okta}">login</a></div>
+                    </div>
+                    <div class="row" sec:authorize="isAuthenticated()">
+                        <div class="col-2">Welcome, you are logged in.</div>
+                        <div class="col">
+                            <form class="form-inline" th:action="@{/logout}" method="post"><button type="submit" class="btn btn-link">logout</button></form>
+                        </div>
+                    </div>
+                </div>
+                <div class="vstack gap-3" layout:fragment="page_content">
+                    content placeholder
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="module" th:src="@{/scripts/dist/main.js}"></script>
+</body>
+</html>

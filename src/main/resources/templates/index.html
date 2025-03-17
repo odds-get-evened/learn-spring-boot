@@ -1,0 +1,18 @@
+<div class="col" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <div class="vstack gap-3">
+        <h1>Spring Boot</h1>
+        <h2>test 123</h2>
+        <ul class="list-group">
+            <li class="list-group-item" sec:authorize="!isAuthenticated()">
+                <a th:href="@{/account/register}">account registration</a>
+            </li>
+            <li class="list-group-item">
+                <a th:href="@{/secret/place}">endpoint protected by OIDC authentication.</a>
+            </li>
+        </ul>
+    </div>
+    <div id="test-app" class="vstack gap-3">this is where test app should go</div>
+</div>
