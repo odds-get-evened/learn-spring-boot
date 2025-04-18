@@ -1,6 +1,9 @@
 package gov.ny.its.mentor_demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "customers")
@@ -10,15 +13,26 @@ public class CustomerEntity {
 	private Long id;
 
 	@Column(name = "first_name")
+	@NotBlank(message = "first name cannot be blank")
 	private String firstName;
 
 	@Column(name = "last_name")
+	@NotBlank
 	private String lastName;
 
+	@NotBlank(message = "email is required")
+	@Email(message = "not a valid email format")
 	private String email;
 
 	@Column(name = "phone_num")
+	@Pattern(regexp = "\\(?\\d{3}\\)?[\\s\\-]\\d{3}\\-\\d{4}", message = "invalid phone number")
 	private String phoneNumber;
+
+	/*
+	@ManyToMany
+	@JoinTable(name = "customer_favorites", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id"))
+	private Set<SongEntity> favSongs;
+	*/
 
 	public Long getId() {
 		return id;
@@ -59,4 +73,14 @@ public class CustomerEntity {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	/*
+	public Set<SongEntity> getFavSongs() {
+		return favSongs;
+	}
+
+	public void setFavSongs(Set<SongEntity> favSongs) {
+		this.favSongs = favSongs;
+	}
+	*/
 }

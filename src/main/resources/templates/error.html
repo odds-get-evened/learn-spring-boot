@@ -1,0 +1,14 @@
+<div class="col" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+
+    <div class="vstack gap-3">
+        <div th:if="${errorCode}">
+            <div>error code: <span th:text="${status}"></span></div>
+            <div>message:</div>
+            <div>${error}</div>
+            <div>stack trace:</div>
+            <div>${trace}</div>
+        </div>
+    </div>
+
+</div>

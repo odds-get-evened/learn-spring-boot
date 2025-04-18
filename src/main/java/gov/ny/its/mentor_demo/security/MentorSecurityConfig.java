@@ -16,7 +16,7 @@ public class MentorSecurityConfig {
 	@Bean
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests((auth) -> {
-			auth.requestMatchers("/login/**", "/account/register", "/logout").permitAll();
+			auth.requestMatchers("/login/**", "/account/register", "/logout", "/error").permitAll();
 			auth.requestMatchers("/secret/**").authenticated();
 			auth.anyRequest().permitAll();
 		});

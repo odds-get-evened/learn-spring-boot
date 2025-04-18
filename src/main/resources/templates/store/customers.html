@@ -15,6 +15,10 @@
                     <td th:text="${customer.firstName + ' ' + customer.lastName}"></td>
                     <td th:text="${customer.email}"></td>
                     <td th:text="${customer.phoneNumber}"></td>
+                    <td>
+                        <a th:href="@{/store/customer/edit/{id}(id=${customer.id})}">edit</a>
+                        <a th:href="@{/store/customer/remove/{id}(id=${customer.id})}">remove</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

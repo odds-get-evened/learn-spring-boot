@@ -18,6 +18,10 @@ public class SongEntity {
 	@Column(name = "album_id")
 	private Long albumId;
 
+	/*
+	@ManyToMany(mappedBy = "favSongs")
+	private Set<CustomerEntity> fans = new HashSet<>();
+	*/
 	public Long getId() {
 		return id;
 	}
