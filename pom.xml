@@ -7,9 +7,9 @@
 		<version>3.3.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>gov.ny.its</groupId>
+	<groupId>org.odds.learn</groupId>
 	<artifactId>mentor-demo</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>mentor-demo</name>
 	<description>Demo for mentoring</description>
 
@@ -46,10 +46,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
@@ -73,18 +69,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-		<!-- for refeshing app on save -->
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency> -->
-        <!-- <dependency>
-            <groupId>org.owasp</groupId>
-            <artifactId>dependency-check-maven</artifactId>
-            <version>12.1.0</version>
-        </dependency> -->
 	</dependencies>
 
 	<build>
@@ -123,27 +107,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- for dependency checks (vulnerabilities, etc...) -->
-			<!-- removing because NIST API is slow and not completing downloads. -->
-			<!--
-			<plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
-				<version>12.1.0</version>
-				<configuration>
-			-->
-					<!-- skip artifacts not bundled in distribution -->
-			<!--
-					<skipProvidedScope>true</skipProvidedScope>
-			-->
-					<!-- suppress false positives or dependencies that cannot be changed -->
-			<!--
-					<suppressionFile>suppressed-cves.xml</suppressionFile>
-					<format>HTML</format>
-					<nvdApiKey>43ec37ba-c3c5-493d-9c3c-72a7fba9fa3d</nvdApiKey>
-				</configuration>
-			</plugin>
-			-->
 		</plugins>
 	</build>
 

@@ -1,9 +1,0 @@
-trigger:
-  - 'dev-pipe-track'
-
-variables:
-  app_name: 'Azure Test'
-
-stages:
-  - stage: 'DummyBuild'
-    displayName: "Dummy Build"
