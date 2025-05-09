@@ -4,6 +4,7 @@ import org.odds.learn.mentor_demo.entity.CustomerEntity;
 import org.odds.learn.mentor_demo.repo.CustomerRepo;
 import jakarta.validation.Valid;
 import javassist.NotFoundException;
+import org.odds.learn.mentor_demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +12,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CustomerController {
 	@Autowired
 	private CustomerRepo customerRepo;
+
+	@Autowired
+	private CustomerService customerService;
 
 	@GetMapping("/store/customers")
 	public String customerList(Model model) {
@@ -71,5 +76,14 @@ public class CustomerController {
 		customerRepo.deleteById(id);
 
 		return "redirect:/store/customers";
+	}
+
+	@GetMapping("/store/customer/details/{id}")
+	public String customerDetails(@PathVariable(value = "id") Long id, Model template) {
+		//Optional<CustomerEntity> customer = customerRepo.findById(id);
+		CustomerEntity customer = customerService.getById(id);
+		template.addAttribute("customer", customer);
+
+		return "/store/customer/details";
 	}
 }
