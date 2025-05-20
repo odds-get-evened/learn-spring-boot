@@ -19,13 +19,15 @@
                             <a class="nav-link" th:href="@{/}">home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="store-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 store
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" th:href="@{/store/customers}">customers</a></li>
-                                <li><a class="dropdown-item" th:href="@{/store/customer/add}">new customer...</a></li>
-                            </ul>
+                            <div class="dropdown-menu" aria-labelledby="store-dropdown">
+                                <a class="dropdown-item" th:href="@{/store/customers}">customers</a>
+                                <a class="dropdown-item" th:href="@{/store/customer/add}">new customer...</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" th:href="@{/store/albums}">albums</a>
+                            </div>
                         </li>
                     </ul>
                     <!-- <form class="d-flex" role="search">

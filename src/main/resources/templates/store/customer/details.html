@@ -4,4 +4,9 @@
             <span th:text="${customer.firstName}"></span>&nbsp;<span th:text="${customer.lastName}"></span>
         </div>
     </div>
+    <div class="vstack gap-3">
+        <div th:each="song : ${fav_songs}">
+            <div th:text="${song.title}"></div>
+        </div>
+    </div>
 </div>

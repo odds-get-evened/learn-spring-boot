@@ -5,9 +5,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "customers")
 public class CustomerEntity {
@@ -30,10 +27,6 @@ public class CustomerEntity {
 	@Column(name = "phone_num")
 	@Pattern(regexp = "\\(?\\d{3}\\)?[\\s\\-]\\d{3}\\-\\d{4}", message = "invalid phone number")
 	private String phoneNumber;
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "customer_favs", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "song_id"))
-	private Set<SongEntity> favoriteSongs = new HashSet<>();
 
 	public Long getId() {
 		return id;
@@ -73,13 +66,5 @@ public class CustomerEntity {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public Set<SongEntity> getFavoriteSongs() {
-		return favoriteSongs;
-	}
-
-	public void setFavoriteSongs(Set<SongEntity> favoriteSongs) {
-		this.favoriteSongs = favoriteSongs;
 	}
 }

@@ -2,8 +2,8 @@ package org.odds.learn.mentor_demo.entity;
 
 import jakarta.persistence.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 // owning side
 @Entity
@@ -18,13 +18,13 @@ public class AlbumEntity {
 	@Column(name = "release_date")
 	private Long releaseDate;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "album_id", referencedColumnName = "id")
-	Set<SongEntity> songs = new HashSet<>();
+	List<SongEntity> songs = new ArrayList<>();
 
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "album_artists", joinColumns = @JoinColumn(name = "album_id"), inverseJoinColumns = @JoinColumn(name = "artist_id"))
-	private Set<ArtistEntity> artists = new HashSet<>();
+	private List<ArtistEntity> artists = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -50,19 +50,19 @@ public class AlbumEntity {
 		this.releaseDate = releaseDate;
 	}
 
-	public Set<SongEntity> getSongs() {
+	public List<SongEntity> getSongs() {
 		return songs;
 	}
 
-	public void setSongs(Set<SongEntity> songs) {
+	public void setSongs(List<SongEntity> songs) {
 		this.songs = songs;
 	}
 
-	public Set<ArtistEntity> getArtists() {
+	public List<ArtistEntity> getArtists() {
 		return artists;
 	}
 
-	public void setArtists(Set<ArtistEntity> artists) {
+	public void setArtists(List<ArtistEntity> artists) {
 		this.artists = artists;
 	}
 

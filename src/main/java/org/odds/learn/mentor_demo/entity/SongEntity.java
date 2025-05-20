@@ -3,9 +3,6 @@ package org.odds.learn.mentor_demo.entity;
 import jakarta.persistence.*;
 import org.hibernate.Length;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "songs")
 public class SongEntity {
@@ -18,11 +15,9 @@ public class SongEntity {
 	@Column(columnDefinition = "LONGTEXT", length = Length.LONG32)
 	private String lyrics;
 
-	@Column(name = "album_id")
-	private Long albumId;
-
-	@ManyToMany(mappedBy = "favoriteSongs")
-	private Set<CustomerEntity> fans = new HashSet<>();
+	@ManyToOne
+	@JoinColumn(name = "album_id", referencedColumnName = "id")
+	private AlbumEntity album;
 
 	public Long getId() {
 		return id;
@@ -46,21 +41,5 @@ public class SongEntity {
 
 	public void setLyrics(String lyrics) {
 		this.lyrics = lyrics;
-	}
-
-	public Long getAlbumId() {
-		return albumId;
-	}
-
-	public void setAlbumId(Long albumId) {
-		this.albumId = albumId;
-	}
-
-	public Set<CustomerEntity> getFans() {
-		return fans;
-	}
-
-	public void setFans(Set<CustomerEntity> fans) {
-		this.fans = fans;
 	}
 }

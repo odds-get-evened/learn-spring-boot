@@ -1,0 +1,19 @@
+<div class="col" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <h1 th:text="${album.title}"></h1>
+    <div class="vstack gap-3">
+        <div unless="${album.artists.empty}">
+            <h2>Artists</h2>
+            <div th:each="artist : ${album.artists}">
+                <div th:text="${artist.artistName}"></div>
+            </div>
+        </div>
+        <h3>
+            Released:
+            <span th:text="${#dates.format(album.releaseDate, 'yyyy')}"></span>
+        </h3>
+        <h4>Songs</h4>
+        <div th:each="song : ${album.songs}">
+            <div th:text="${song.title}"></div>
+        </div>
+    </div>
+</div>

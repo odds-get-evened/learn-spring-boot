@@ -1,10 +1,13 @@
 package org.odds.learn.mentor_demo.controller;
 
+import org.odds.learn.mentor_demo.entity.AlbumEntity;
 import org.odds.learn.mentor_demo.entity.CustomerEntity;
+import org.odds.learn.mentor_demo.entity.SongEntity;
+import org.odds.learn.mentor_demo.repo.AlbumRepo;
 import org.odds.learn.mentor_demo.repo.CustomerRepo;
 import jakarta.validation.Valid;
 import javassist.NotFoundException;
-import org.odds.learn.mentor_demo.service.CustomerService;
+import org.odds.learn.mentor_demo.repo.SongRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,14 +15,18 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Controller
-public class CustomerController {
+public class StoreController {
 	@Autowired
 	private CustomerRepo customerRepo;
 
 	@Autowired
-	private CustomerService customerService;
+	private AlbumRepo albumRepo;
+
+	@Autowired
+	private SongRepo songRepo;
 
 	@GetMapping("/store/customers")
 	public String customerList(Model model) {
@@ -78,11 +85,27 @@ public class CustomerController {
 	}
 
 	@GetMapping("/store/customer/details/{id}")
-	public String customerDetails(@PathVariable(value = "id") Long id, Model template) {
+	public String customerDetails(@PathVariable(value = "id") Long id, Model template) throws NoSuchElementException {
 		//Optional<CustomerEntity> customer = customerRepo.findById(id);
-		CustomerEntity customer = customerService.getById(id);
+		CustomerEntity customer = customerRepo.findById(id).orElseThrow();
 		template.addAttribute("customer", customer);
 
-		return "/store/customer/details";
+		return "store/customer/details";
+	}
+
+	@GetMapping("/store/albums")
+	public String viewAlbums(Model m) {
+		List<AlbumEntity> albums = albumRepo.findAll();
+		m.addAttribute("albums", albums);
+
+		return "store/albums";
+	}
+
+	@GetMapping("/store/albums/details/{id}")
+	public String albumDetails(@PathVariable(value = "id") Long id, Model m) throws NoSuchElementException {
+		AlbumEntity album = albumRepo.findById(id).orElseThrow();
+		m.addAttribute("album", album);
+
+		return "store/albums/details";
 	}
 }

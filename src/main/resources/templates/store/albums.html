@@ -1,0 +1,22 @@
+<div class="col" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+    <h1>Music catalog: Albums</h1>
+    <div class="vstack gap-3">
+        <table class="table striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Release year</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="album : ${albums}">
+                    <td>
+                        <a th:text="${album.title}" th:href="@{/store/albums/details/{id}(id=${album.id})}"></a>
+                    </td>
+                    <td th:text="${#dates.format(album.releaseDate, 'yyyy')}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
