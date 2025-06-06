@@ -4,7 +4,9 @@
         <div unless="${album.artists.empty}">
             <h2>Artists</h2>
             <div th:each="artist : ${album.artists}">
-                <div th:text="${artist.artistName}"></div>
+                <div>
+                    <a th:text="${artist.artistName}" th:href="@{/store/artist/details/{id}(id=${artist.id})}"></a>
+                </div>
             </div>
         </div>
         <h3>

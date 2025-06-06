@@ -18,6 +18,14 @@
 		<pmd.version>3.23.0</pmd.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>nys-registry</id>
+			<name>NYS Artifactory</name>
+			<url>https://registry.ny.gov/artifactory/dot_mvn_virt/</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
