@@ -100,6 +100,14 @@ public class StoreController {
 		return "store/albums";
 	}
 
+	@GetMapping("/store/albums/with_lyrics")
+	public String albumsWithLyrics(Model m) {
+		List<AlbumEntity> albums = albumRepo.albumsWithLyrics();
+		m.addAttribute("albums", albums);
+
+		return "store/albums";
+	}
+
 	@GetMapping("/store/albums/details/{id}")
 	public String albumDetails(@PathVariable(value = "id") Long id, Model m) throws NoSuchElementException {
 		AlbumEntity album = albumRepo.findById(id).orElseThrow();

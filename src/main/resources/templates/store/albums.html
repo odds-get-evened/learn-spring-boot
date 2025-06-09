@@ -1,6 +1,9 @@
 <div class="col" layout:fragment="page_content" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
     <h1>Music catalog: Albums</h1>
     <div class="vstack gap-3">
+        <div>
+            <a th:href="@{/store/albums/with_lyrics}"></a>
+        </div>
         <table class="table striped">
             <thead>
                 <tr>
